@@ -1,0 +1,10 @@
+__pycache__
+.env
+gpt2
+
+onnx/weights
+serve/model_store
+serve/weights
+serve/gpt2-medium.mar
+
+weights

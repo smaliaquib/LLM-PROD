@@ -16,6 +16,8 @@ LLM PROD/
 │   ├── sft-gpt-lavita-medical-qa.ipynb (SFT fine-tuning on Lavita Medical dataset)
 │   ├── train_dp.py
 │   └── train_multinode.py
+├── img/
+│   └── scaling.png
 ├── onnx/
 │   ├── convert.py
 │   └── utils.py
@@ -24,17 +26,23 @@ LLM PROD/
 │   ├── handler.py
 │   ├── test.py
 │   └── utils.py
-├── TensoRT/
+├── TensorRT/
 │   └── tensort_convert.py
 ├── visualization/
-├── requirements.txt
+├── .gitignore
+├── deploy-kserve.sh
+├── Dockerfile
 ├── fastapi_llm_app.py
 ├── gpt_download.py
 ├── inference.py
+├── LICENSE
+├── load-test-new.py
+├── README.md
+├── requirements.txt
+├── serverless_deployment_and_inference.ipynb
 ├── train_dp.py
 ├── train.py
-├── utils.py
-└── Dockerfile
+└── utils.py
 ```
 
 ## Features
@@ -121,7 +129,7 @@ The API will be available at `http://localhost:8000`. You can send a POST reques
 }
 ```
 
-#### TorchServe (Serverless)
+#### TorchServe
 To serve the model using TorchServe, follow these steps:
 
 1. Package the model:
@@ -139,16 +147,35 @@ To serve the model using TorchServe, follow these steps:
    python serve/test.py
    ```
 
+#### KServe (Serverless on Kubernetes)
+For serverless deployment using KServe on Kubernetes, use the `deploy-kserve.sh` script:
+
+```bash
+./deploy-kserve.sh
+```
+
+Refer to `serverless_deployment_and_inference.ipynb` for detailed instructions on serverless deployment and inference with KServe.
+
+### Load Testing
+
+To test the performance of your deployed model under load, use the `load-test-new.py` script:
+
+```bash
+python load-test-new.py --concurrent 20 --total 200
+```
+
+This will send 200 requests with 20 concurrent connections to your deployed model endpoint.
+
 ### Model Conversion
 
-#### ONNX
+#### ONNX (alpha stage)
 To convert the model to ONNX format, use the `convert.py` script in the `onnx` directory:
 
 ```bash
 python onnx/convert.py
 ```
 
-#### TensorRT
+#### TensorRT (Testing Stage)
 To convert the model to TensorRT format, use the `tensort_convert.py` script in the `TensoRT` directory:
 
 ```bash

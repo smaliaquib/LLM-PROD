@@ -147,8 +147,8 @@ To serve the model using TorchServe, follow these steps:
    python serve/test.py
    ```
 
-#### KServe (Serverless on Kubernetes)
-For serverless deployment using KServe on Kubernetes, use the `deploy-kserve.sh` script:
+####  Knative + KServe (Serverless on Kubernetes)
+For serverless deployment `scale_to_zero_enabled` using Knative & KServe on Kubernetes, use the `deploy-kserve.sh` script:
 
 ```bash
 ./deploy-kserve.sh
